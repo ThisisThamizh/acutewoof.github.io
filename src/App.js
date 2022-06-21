@@ -97,7 +97,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section id='projects' class='py-3 pt-7 bg-base-200'>
+      <section id='webring' class='py-3 pt-7 bg-base-200'>
         <div class='m-2 px-4'>
           <div class='lg:text-center md:text-center sm:text-center'>
             <h2 class='text-indigo-600 font-semibold tracking-wide uppercase text-lg'>
