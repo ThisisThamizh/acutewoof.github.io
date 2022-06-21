@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import woofMusic from "./images/woof-music.png";
-import discord from "./images/Discord-Logo-White.svg";
 
 function App() {
   return (
