@@ -64,8 +64,9 @@ function App() {
               My FOSS Projects
             </p>
             <p class='mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto'>
-              The projects listed below are a few of the many free and open
-              source projects that I've built along my journey of programming.
+              The projects listed below are a few (that I think are worth
+              sharing) of the many free and open source projects that I've built
+              along my journey of programming.
             </p>
           </div>
           <br />
