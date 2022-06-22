@@ -23,22 +23,22 @@ function App() {
           class='hero min-h-screen'
           style={{
             backgroundImage:
-              "url(https://source.unsplash.com/random/1920x1080/?night%20sky%20galaxy)",
+              "url(https://source.unsplash.com/random/1920x1080/?dark%20forest%20mountains%20nature%20water)",
           }}
         >
           <div class='hero-overlay bg-opacity-60'></div>
           <div class='hero-content text-center text-neutral-content'>
             <div class='max-w-md'>
-              <h1 class='mb-5 text-5xl font-bold'>Hello there</h1>
+              <h1 class='mb-5 text-5xl font-bold text-white'>Hello there!</h1>
               <div class='mb-5'>
-                I'm a programmer and Youtuber. I make videos about programming,
-                linux, and other tech related topics.
+                I'm Woof. A programmer and Youtuber. I make videos about
+                programming, linux, and other tech related topics.
                 <br />
                 <br />
                 <div class='flex gap-1 justify-center'>
-                  <div class='badge badge-lg badge-accent'>Programmer</div>
-                  <div class='badge badge-lg badge-accent'>Woof OS Dev</div>
-                  <div class='badge badge-lg badge-accent'>YouTuber</div>
+                  <div class='badge badge-lg badge-secondary '>Programmer</div>
+                  <div class='badge badge-lg badge-secondary '>Woof OS Dev</div>
+                  <div class='badge badge-lg badge-secondary '>YouTuber</div>
                 </div>
               </div>
               <div class='flex gap-2 justify-center content-center'>
