@@ -23,7 +23,7 @@ function App() {
           class='hero min-h-screen'
           style={{
             backgroundImage:
-              "url(https://source.unsplash.com/random/1920x1080/?dark%20nature",
+              "url(https://source.unsplash.com/random/1920x1080/?dark%20nature)",
           }}
         >
           <div class='hero-overlay bg-opacity-60'></div>
