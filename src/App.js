@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import woofMusic from "./images/woof-music.png";
+import rnsplash from "./images/rnsplash.png";
 
 function App() {
   return (
@@ -69,7 +70,10 @@ function App() {
             </p>
           </div>
           <br />
-          <div class='flex flex-wrap justify-evenly items-center py-10'>
+          <div
+            id='projects-grid'
+            class='flex flex-wrap justify-evenly items-stretch py-10'
+          >
             <Card
               image={woofMusic}
               title='Woof Music'
@@ -88,6 +92,13 @@ function App() {
               desc='A simple Arch respin for users who want a quick Arch installation with a comfortable, functional eye candy experience. Qtile and Xfce editions available with the Calamares installer.'
               link='https://woof-os.github.io'
               sourceCodeLink='https://github.com/woof-os'
+            />
+            <Card
+              image={rnsplash}
+              title='RnSplash'
+              desc='Get random images from unsplash with query and resolution. Uses Unsplash API for the images and React Daisy UI for the UI.'
+              link='https://acutewoof.is-a.dev/random-unsplash'
+              sourceCodeLink='https://github.com/acutewoof/random-unsplash'
             />
           </div>
           <div class='lg:text-center md:text-center sm:text-center'>
@@ -114,7 +125,7 @@ function App() {
             </p>
           </div>
           <br />
-          <div class='flex flex-wrap justify-evenly items-center py-10'>
+          <div class='flex flex-wrap items-stretch justify-evenly items-center py-10'>
             <WebringMember
               profilePic='https://github.com/sora6kq.png'
               site='https://sora6kq.github.io'
@@ -264,13 +275,7 @@ function WebringMember(props) {
           </div>
         </div>
         <h2 class='card-title'>{name}</h2>
-        <p
-          style={{
-            minHeight: "5rem",
-          }}
-        >
-          {desc}
-        </p>
+        <p>{desc}</p>
         <div class='card-actions'>
           <a href={site} class='btn btn-primary'>
             Visit Their Site
