@@ -96,7 +96,7 @@ function App() {
             <Card
               image={rnsplash}
               title='RnSplash'
-              desc='Get random images from unsplash with query and resolution. Uses Unsplash API for the images and React Daisy UI for the UI.'
+              desc='Get random images from unsplash with query and resolution. Uses Unsplash API for the images and React Daisy UI for the UI. Also randomizes the default theme coz why not.'
               link='https://acutewoof.is-a.dev/random-unsplash'
               sourceCodeLink='https://github.com/acutewoof/random-unsplash'
             />
