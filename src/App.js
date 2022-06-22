@@ -115,7 +115,6 @@ function App() {
           </div>
           <br />
           <div class='flex flex-wrap justify-evenly items-center py-10'>
-            {/* webring members */}
             <WebringMember
               profilePic='https://github.com/sora6kq.png'
               site='https://sora6kq.github.io'
@@ -222,7 +221,7 @@ function App() {
 function Card(props) {
   const { title, desc, image, link, sourceCodeLink } = props;
   return (
-    <div class='card w-96 bg-base-100 shadow-xl'>
+    <div class='card w-96 bg-base-100 shadow-xl mb-5'>
       <figure>
         <img src={image} alt='ss' />
       </figure>
