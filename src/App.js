@@ -36,9 +36,9 @@ function App() {
                 <br />
                 <br />
                 <div class='flex gap-1 justify-center'>
-                  <div class='badge badge-lg badge-secondary '>Programmer</div>
-                  <div class='badge badge-lg badge-secondary '>Woof OS Dev</div>
-                  <div class='badge badge-lg badge-secondary '>YouTuber</div>
+                  <div class='badge badge-lg badge-secondary'>Programmer</div>
+                  <div class='badge badge-lg badge-secondary'>Woof OS Dev</div>
+                  <div class='badge badge-lg badge-secondary'>YouTuber</div>
                 </div>
               </div>
               <div class='flex gap-2 justify-center content-center'>
