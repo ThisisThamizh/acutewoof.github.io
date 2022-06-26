@@ -18,6 +18,11 @@ function App() {
             ACuteWoof
           </a>
         </div>
+        <div class="flex-none">
+          <a href="/blog" class="btn btn-ghost normal-case text-xl">
+            Blog
+          </a>
+        </div>
       </nav>
       <section id="#">
         <div
@@ -48,9 +53,6 @@ function App() {
                 </a>
                 <a href="/#webring" class="btn btn-primary">
                   Webring
-                </a>
-                <a href="/blog" class="btn btn-primary">
-                  Blog
                 </a>
               </div>
             </div>
