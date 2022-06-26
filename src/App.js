@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import woofMusic from "./images/woof-music.png";
 import rnsplash from "./images/rnsplash.png";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-
-	  const [url, setUrl] = useState(
+  const [url, setUrl] = useState(
     "https://source.unsplash.com/random/500x500/?forest"
   );
   const [theme, setTheme] = useState();
@@ -30,7 +29,6 @@ function App() {
     }
     setUrl("https://source.unsplash.com/random/1920x1080/?" + theme);
   }, [theme]);
-
 
   return (
     <div data-theme={theme}>
@@ -57,8 +55,7 @@ function App() {
         <div
           class="hero min-h-screen"
           style={{
-            backgroundImage:
-              `url(${url})`,
+            backgroundImage: `url(${url})`,
           }}
         >
           <div class="hero-overlay bg-opacity-60"></div>
