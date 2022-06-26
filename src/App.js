@@ -1,10 +1,39 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import woofMusic from "./images/woof-music.png";
 import rnsplash from "./images/rnsplash.png";
+import {useState, useEffect} from "react";
 
 function App() {
+
+	  const [url, setUrl] = useState(
+    "https://source.unsplash.com/random/500x500/?forest"
+  );
+  const [theme, setTheme] = useState();
+
+  useEffect(() => {
+    const themes = [
+      "dracula",
+      "forest",
+      "business",
+      "coffee",
+      "dark",
+      "light",
+      "pastel",
+      "night",
+      "black",
+      "corporate",
+      "lofi",
+      "cmyk",
+    ];
+    if (!theme) {
+      setTheme(themes[Math.floor(Math.random() * themes.length)]);
+    }
+    setUrl("https://source.unsplash.com/random/1920x1080/?" + theme);
+  }, [theme]);
+
+
   return (
-    <>
+    <div data-theme={theme}>
       <nav className="navbar bg-base-100">
         <div class="flex-none">
           <a href="/" tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -29,7 +58,7 @@ function App() {
           class="hero min-h-screen"
           style={{
             backgroundImage:
-              "url(https://source.unsplash.com/random/1920x1080/?dark%20nature)",
+              `url(${url})`,
           }}
         >
           <div class="hero-overlay bg-opacity-60"></div>
@@ -62,13 +91,13 @@ function App() {
       <section id="projects" class="py-3 pt-7 bg-base-300">
         <div class="m-2 px-4">
           <div class="lg:text-center md:text-center sm:text-center">
-            <h2 class="text-indigo-600 font-semibold tracking-wide uppercase text-lg">
+            <h2 class="text-primary font-semibold tracking-wide uppercase text-lg">
               Projects
             </h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
               My FOSS Projects
             </p>
-            <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">
+            <p class="mt-4 max-w-2xl text-xl text-base-content lg:mx-auto">
               The projects listed below are a few (that I think are worth
               sharing) of the many free and open source projects that I've built
               along my journey of programming.
@@ -116,13 +145,13 @@ function App() {
       <section id="webring" class="py-3 pt-7 bg-base-200">
         <div class="m-2 px-4">
           <div class="lg:text-center md:text-center sm:text-center">
-            <h2 class="text-indigo-600 font-semibold tracking-wide uppercase text-lg">
+            <h2 class="text-primary font-semibold tracking-wide uppercase text-lg">
               Webring
             </h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
               Fellow Developers Worth Checking Out
             </p>
-            <p class="mt-4 max-w-2xl text-xl text-gray-400 lg:mx-auto">
+            <p class="mt-4 max-w-2xl text-xl text-base-content lg:mx-auto">
               A webring is a collection of websites linked together in a
               circular structure, and usually organized around a specific theme,
               often educational or social. They were popular in the 1990s and
@@ -230,7 +259,7 @@ function App() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 
