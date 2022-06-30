@@ -269,7 +269,7 @@ function Card(props) {
       </figure>
       <div class="card-body">
         <h2 class="card-title">{title}</h2>
-        <p>{desc}</p>
+        <p class="text-justify">{desc}</p>
         <div class="card-actions justify-end">
           <a
             target="_blank"
@@ -306,7 +306,7 @@ function WebringMember(props) {
           </div>
         </div>
         <h2 class="card-title">{name}</h2>
-        <p>{desc}</p>
+        <p class="text-justify">{desc}</p>
         <div class="card-actions">
           <a href={site} class="btn btn-primary">
             Visit Their Site
