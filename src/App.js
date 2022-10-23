@@ -102,7 +102,7 @@ function App() {
                     </span>
                   </h1>
                   <p className=" py-10 text-justify " ref={ref}>
-                    I have been programming for over an year, and I've recently
+                    I have been programming for over a year, and I've recently
                     decided to start freelancing.
                     <br />
                     You can also find my videos on youtube.
