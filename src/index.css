@@ -12,3 +12,9 @@
     --animation-input: 0;
     --tab-radius: 0;
 }
+
+@media (max-width: 768px) {
+    .hidden-image {
+        display: none;
+    }
+}
