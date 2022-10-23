@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import woofMusic from "./images/woof-music.png";
 import rnsplash from "./images/rnsplash.png";
+import landingPage from "./images/landing-page.png";
 import PoygonScatter from "./images/polygon-scatter-haikei.svg";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -142,7 +143,7 @@ function App() {
             zIndex: 100,
           }}
         >
-          <h1 className="text-secondary font-semibold tracking-wide uppercase text-lg  pt-6 text-center">
+          <h1 className="text-secondary font-semibold tracking-wide uppercase text-lg  py-3 text-center">
             Projects
           </h1>
         </header>
@@ -186,6 +187,39 @@ function App() {
           gh="https://github.com/acutewoof/random-unsplash"
           flex="flex-col"
         />
+      </section>
+
+      <section id="freelance-listings" className="bg-base-100">
+        <header
+          className="bg-base-100 backdrop-filter backdrop-blur-sm bg-opacity-50"
+          style={{
+            // sticky
+            position: "sticky",
+            top: 0,
+            zIndex: 99,
+          }}
+        >
+          <h1 className="text-secondary font-semibold tracking-wide uppercase text-lg  py-3 text-center">
+            Get Something Made
+          </h1>
+        </header>
+        <FreelanceOffer
+          title={
+            <>
+              <span className="text-primary">$25</span> Landing Page
+            </>
+          }
+          description="I'm offering to make you a dynamic landing page website using modern JavaScript frameworks like React JS. The website will be carefully designed and coded to give a modern, minimalistic, attractive output."
+          image={landingPage}
+          link="
+          https://www.fiverr.com/acutewoof/build-you-a-product-landing-page
+          "
+          flex="flex-col"
+        />
+
+        <h1 className="text-gray-600 font-semibold tracking-wide uppercase text-lg  pb-14 text-center">
+          More To Come
+        </h1>
       </section>
 
       <footer class="footer p-10 bg-neutral text-neutral-content">
@@ -348,6 +382,101 @@ function Project(props) {
                 }}
               >
                 Github
+              </button>
+            </div>
+          </div>
+          <img
+            src={image}
+            alt="..."
+            ref={imgRef}
+            style={{
+              opacity: 0,
+              x: 100,
+            }}
+            className="max-w-screen rounded-lg shadow-2xl crop-image"
+          />
+        </div>
+      </div>
+    </>
+  );
+}
+
+function FreelanceOffer(props) {
+  const { title, description, link, image, flex } = props;
+
+  const ref = useRef();
+  const isVis = useOnScreen(ref);
+
+  const imgRef = useRef();
+  const isImgVis = useOnScreen(imgRef);
+
+  const textRef = useRef();
+  const isTextVis = useOnScreen(textRef);
+
+  const buttonRef = useRef();
+  const isButtonVis = useOnScreen(buttonRef);
+
+  // animate aniRef if ref is visible
+  useEffect(() => {
+    if (isVis) {
+      console.log("visible");
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1 }
+      );
+    }
+  }, [isVis]);
+
+  useEffect(() => {
+    if (isImgVis) {
+      gsap.fromTo(
+        imgRef.current,
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isImgVis]);
+
+  useEffect(() => {
+    if (isTextVis) {
+      gsap.fromTo(
+        textRef.current,
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isTextVis]);
+
+  useEffect(() => {
+    if (isButtonVis) {
+      gsap.fromTo(
+        buttonRef.current,
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isButtonVis]);
+
+  return (
+    <>
+      <div className="hero py-32 lg:min-h-screen bg-base-100">
+        <div className={`px-26 hero-content ${flex} lg:flex-col lg:gap-24`}>
+          <div>
+            <h1 className="text-5xl font-bold" ref={ref}>
+              {title}
+            </h1>
+            <p className=" py-10 text-justify " ref={textRef}>
+              {description}
+            </p>
+            <div className="flex flex-row gap-2" ref={buttonRef}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  window.open(link);
+                }}
+              >
+                View
               </button>
             </div>
           </div>
