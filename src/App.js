@@ -1,189 +1,171 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import woofMusic from "./images/woof-music.png";
 import rnsplash from "./images/rnsplash.png";
-import { useState, useEffect } from "react";
+import PoygonScatter from "./images/polygon-scatter-haikei.svg";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 
-function App() {
-  const [url, setUrl] = useState(
-    "https://source.unsplash.com/random/500x500/?forest"
+function useOnScreen(ref) {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  const observer = new IntersectionObserver(([entry]) =>
+    setIntersecting(entry.isIntersecting)
   );
-  const [theme, setTheme] = useState();
 
   useEffect(() => {
-    const themes = [
-      "dracula",
-      "forest",
-      "business",
-      "coffee",
-      "dark",
-      "light",
-      "pastel",
-      "night",
-      "black",
-      "corporate",
-      "lofi",
-      "cmyk",
-    ];
-    if (!theme) {
-      setTheme(themes[Math.floor(Math.random() * themes.length)]);
+    observer.observe(ref.current);
+    // Remove the observer as soon as the component is unmounted
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return isIntersecting;
+}
+
+function App() {
+  const theme = "night";
+
+  const ref = useRef();
+  const isVis = useOnScreen(ref);
+
+  const btnRef = useRef();
+  const isBtnVis = useOnScreen(btnRef);
+
+  const imgRef = useRef();
+  const isImgVis = useOnScreen(imgRef);
+
+  useEffect(() => {
+    if (isVis) {
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: -100 },
+        { opacity: 1, y: 0, duration: 1 }
+      );
     }
-    setUrl("https://source.unsplash.com/random/1920x1080/?" + theme);
-  }, [theme]);
+
+    if (isBtnVis) {
+      gsap.fromTo(
+        btnRef.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+
+    if (isImgVis) {
+      gsap.fromTo(
+        imgRef.current,
+        { opacity: 0, x: 100 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isVis, isBtnVis]);
 
   return (
     <div data-theme={theme}>
-      <nav className="navbar bg-base-100">
-        <div class="flex-none">
-          <a href="/" tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img alt="avatar" src="https://github.com/acutewoof.png" />
-            </div>
-          </a>
-        </div>
-        <div class="flex-1">
-          <a href="/" className="btn btn-ghost normal-case text-xl">
-            ACuteWoof
-          </a>
-        </div>
-        <div class="flex-none">
-          <a href="/blog" class="btn btn-ghost normal-case text-xl">
-            Blog
-          </a>
-        </div>
-      </nav>
-      <section id="#">
+      <section id="hi">
         <div
-          class="hero min-h-screen"
+          className="hero py-32 lg:min-h-screen bg-base-300"
           style={{
-            backgroundImage: `url(${url})`,
+            backgroundImage: `url(${PoygonScatter})`,
+            backgroundSize: "contain",
           }}
         >
-          <div class="hero-overlay bg-opacity-60"></div>
-          <div class="hero-content text-center text-neutral-content">
-            <div class="max-w-md">
-              <h1 class="mb-5 text-5xl font-bold text-white">Hello there!</h1>
-              <div class="mb-5">
-                I'm Woof. A programmer and Youtuber. I make videos about
-                programming, linux, and other tech related topics.
-                <br />
-                <br />
-                <div class="flex gap-1 justify-center">
-                  <div class="badge badge-lg badge-secondary">Programmer</div>
-                  <div class="badge badge-lg badge-secondary">Woof OS</div>
-                  <div class="badge badge-lg badge-secondary">YouTuber</div>
+          <div>
+            <div className="px-26 hero-content flex-col lg:flex-row lg:gap-24">
+              <div>
+                <div ref={ref}>
+                  <h1 className="text-5xl font-bold">
+                    I'm <span className="text-primary">Vithushan.</span>
+                  </h1>
+                  <p className=" py-10 text-justify ">
+                    I have been programming for over an year, and I've recently
+                    decided to start freelancing.
+                    <br />
+                    You can also find my videos on youtube.
+                  </p>
+                </div>
+                <div className="flex flex-row gap-2" ref={btnRef}>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      window.open("https://discord.gg/9ZBmZYVrD3");
+                    }}
+                  >
+                    Say Hi!
+                  </button>
+                  {
+                    //  <button className="btn btn-primary">Get A Site Made</button>
+                  }
                 </div>
               </div>
-              <div class="flex gap-2 justify-center content-center">
-                <a href="/#projects" class="btn btn-primary">
-                  Projects
-                </a>
-                <a href="/#webring" class="btn btn-primary">
-                  Webring
-                </a>
-              </div>
+              <img
+                alt="..."
+                ref={imgRef}
+                src="https://media.discordapp.net/attachments/812720081024319518/1006545010252075048/Woof_Imagine_Dragons_Smokes_and_Mirrors_album_cover_mixed_with__6eae6513-a0bf-41bc-af0a-5d2c8cadb970.png?width=634&height=634"
+                className="max-w-sm rounded-lg shadow-2xl hidden-image"
+              />
             </div>
           </div>
         </div>
       </section>
-      <section id="projects" class="py-3 pt-7 bg-base-300">
-        <div class="m-2 px-4">
-          <div class="lg:text-center md:text-center sm:text-center">
-            <h2 class="text-primary font-semibold tracking-wide uppercase text-lg">
-              Projects
-            </h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
-              My FOSS Projects
-            </p>
-            <p class="mt-4 max-w-2xl text-xl text-base-content lg:mx-auto">
-              The projects listed below are a few (that I think are worth
-              sharing) of the many free and open source projects that I've built
-              along my journey of programming.
-            </p>
-          </div>
-          <br />
-          <div
-            id="projects-grid"
-            class="flex flex-wrap justify-evenly items-stretch py-10"
-          >
-            <Card
-              image={woofMusic}
-              title="Woof Music"
-              desc="
-             A web music player built with React and Ant Design. Uses
-                  YouTube for streaming music from YouTube embeds, Firebase for
-                  account management, user playlists, user configuration and
-                  YouTube Music for Search, Metadata, etc.
-            "
-              link="https://woof-music.web.app"
-              sourceCodeLink="https://github.com/the-woofs/woof-music-r2"
-            />
-            <Card
-              image="https://camo.githubusercontent.com/c7190dd6d86d45d3304c7e6029ddac79e45383a6eea835bd0aa50ad5025c4df7/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3633353632353931373632333832383532302f3934303937353733353931393737313638382f756e6b6e6f776e2e706e67"
-              title="Woof OS"
-              desc="A simple Arch respin for users who want a quick Arch installation with a comfortable, functional eye candy experience. Qtile and Xfce editions available with the Calamares installer."
-              link="https://woof-os.github.io"
-              sourceCodeLink="https://github.com/woof-os"
-            />
-            <Card
-              image={rnsplash}
-              title="RnSplash"
-              desc="Get random images from unsplash with query and resolution. Uses Unsplash API for the images and React Daisy UI for the UI. Also randomizes the default theme coz why not."
-              link="https://acutewoof.is-a.dev/random-unsplash"
-              sourceCodeLink="https://github.com/acutewoof/random-unsplash"
-            />
-          </div>
-          <div class="lg:text-center md:text-center sm:text-center">
-            <h2 class="text-gray-600 font-semibold tracking-wide text-lg">
-              More to come
-            </h2>
-          </div>
-        </div>
+
+      <section id="projects" className="bg-base-300">
+        <header
+          className="bg-base-300 backdrop-filter backdrop-blur-sm bg-opacity-50"
+          style={{
+            // sticky
+            position: "sticky",
+            top: 0,
+            zIndex: 100,
+          }}
+        >
+          <h1 className="text-secondary font-semibold tracking-wide uppercase text-lg  pt-6 text-center">
+            Projects
+          </h1>
+        </header>
+        <Project
+          title={
+            <>
+              Woof <span className="text-primary">Music</span>
+            </>
+          }
+          description="A web music player built with React and Ant Design. Uses YouTube for streaming music from YouTube embeds, Firebase for account management, user playlists, user configuration and YouTube Music for Search, Metadata, etc."
+          image={woofMusic}
+          link="
+          https://woof-music.web.app
+          "
+          gh="https://github.com/the-woofs/woof-music-r2"
+          flex="flex-col"
+        />
+        <Project
+          title={
+            <>
+              Woof <span className="text-primary">OS</span>
+            </>
+          }
+          description="A simple Arch respin for users who want a quick Arch installation with a comfortable, functional eye candy experience. Qtile and Xfce editions available with the Calamares installer."
+          image={
+            "https://camo.githubusercontent.com/c7190dd6d86d45d3304c7e6029ddac79e45383a6eea835bd0aa50ad5025c4df7/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3633353632353931373632333832383532302f3934303937353733353931393737313638382f756e6b6e6f776e2e706e67"
+          }
+          link="https://woof-os.github.io"
+          gh="https://github.com/woof-os"
+          flex="flex-col"
+        />
+        <Project
+          title={
+            <>
+              RN<span className="text-primary">Splash</span>
+            </>
+          }
+          description="Get random images from unsplash with query and resolution. Uses Unsplash API for the images and React Daisy UI for the UI. Also randomizes the default theme coz why not."
+          image={rnsplash}
+          link="https://acutewoof.is-a.dev/random-unsplash"
+          gh="https://github.com/acutewoof/random-unsplash"
+          flex="flex-col"
+        />
       </section>
-      <section id="webring" class="py-3 pt-7 bg-base-200">
-        <div class="m-2 px-4">
-          <div class="lg:text-center md:text-center sm:text-center">
-            <h2 class="text-primary font-semibold tracking-wide uppercase text-lg">
-              Webring
-            </h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
-              Fellow Developers Worth Checking Out
-            </p>
-            <p class="mt-4 max-w-2xl text-xl text-base-content lg:mx-auto">
-              A webring is a collection of websites linked together in a
-              circular structure, and usually organized around a specific theme,
-              often educational or social. They were popular in the 1990s and
-              early 2000s, particularly among amateur websites.
-            </p>
-          </div>
-          <br />
-          <div class="flex flex-wrap items-stretch justify-evenly items-center py-10">
-            <WebringMember
-              profilePic="https://github.com/sora6kq.png"
-              site="https://sora6kq.github.io"
-              name="Sora"
-              desc="eeeeeeeeeee"
-            />
-            <WebringMember
-              profilePic="https://github.com/metastag.png"
-              site="https://metastag.github.io"
-              name="MetaStag"
-              desc='"I only judge languages based on whether they support operator overloading or not" ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀~ MetaStag, 2021'
-            />
-            <WebringMember
-              profilePic="https://binarydreams.xyz/favicon.png"
-              site="https://binarydreams.xyz"
-              name="Max"
-              desc="Business Informatics student, hobbyist Linux/Unix user, speaks German and English"
-            />
-            <WebringMember
-              profilePic="https://github.com/woodiewood2130.png"
-              site="https://woodiewood2130.github.io/"
-              name="Gammageek"
-              desc="Sup People. Its chill here with a cat with its mouth in a mug. Enjoy"
-            />
-          </div>
-        </div>
-      </section>
+
       <footer class="footer p-10 bg-neutral text-neutral-content">
         <div>
           <svg
@@ -260,60 +242,106 @@ function App() {
   );
 }
 
-function Card(props) {
-  const { title, desc, image, link, sourceCodeLink } = props;
-  return (
-    <div class="card w-96 bg-base-100 shadow-xl mb-5">
-      <figure>
-        <img src={image} alt="ss" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">{title}</h2>
-        <p class="text-justify">{desc}</p>
-        <div class="card-actions justify-end">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={sourceCodeLink}
-            class="btn btn-ghost"
-          >
-            Github
-          </a>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={link}
-            class="btn btn-secondary"
-          >
-            View
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
+function Project(props) {
+  const { title, description, link, gh, image, flex } = props;
 
-function WebringMember(props) {
-  const { profilePic, site, name, desc } = props;
+  const ref = useRef();
+  const isVis = useOnScreen(ref);
+
+  const imgRef = useRef();
+  const isImgVis = useOnScreen(imgRef);
+
+  const textRef = useRef();
+  const isTextVis = useOnScreen(textRef);
+
+  const buttonRef = useRef();
+  const isButtonVis = useOnScreen(buttonRef);
+
+  // animate aniRef if ref is visible
+  useEffect(() => {
+    if (isVis) {
+      console.log("visible");
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1 }
+      );
+    }
+  }, [isVis]);
+
+  useEffect(() => {
+    if (isImgVis) {
+      gsap.fromTo(
+        imgRef.current,
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isImgVis]);
+
+  useEffect(() => {
+    if (isTextVis) {
+      gsap.fromTo(
+        textRef.current,
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isTextVis]);
+
+  useEffect(() => {
+    if (isButtonVis) {
+      gsap.fromTo(
+        buttonRef.current,
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+  }, [isButtonVis]);
+
   return (
-    <div class="card w-96 bg-base-100 shadow-xl mb-8">
-      <div class="card-body items-center text-center">
-        <div class="lg:text-center md:text-center sm:text-center">
-          <div class="avatar">
-            <div class="w-28 rounded-full">
-              <img alt="pog person" src={profilePic} />
+    <>
+      <div className="hero py-32 lg:min-h-screen bg-base-300">
+        <div className={`px-26 hero-content ${flex} lg:flex-col lg:gap-24`}>
+          <div>
+            <h1 className="text-5xl font-bold" ref={ref}>
+              {title}
+            </h1>
+            <p className=" py-10 text-justify " ref={textRef}>
+              {description}
+            </p>
+            <div className="flex flex-row gap-2" ref={buttonRef}>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  window.open(link);
+                }}
+              >
+                View
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  window.open(gh);
+                }}
+              >
+                Github
+              </button>
             </div>
           </div>
-        </div>
-        <h2 class="card-title">{name}</h2>
-        <p class="text-justify">{desc}</p>
-        <div class="card-actions">
-          <a href={site} class="btn btn-primary">
-            Visit Their Site
-          </a>
+          <img
+            src={image}
+            alt="..."
+            ref={imgRef}
+            style={{
+              opacity: 0,
+              x: 100,
+            }}
+            className="max-w-screen rounded-lg shadow-2xl crop-image"
+          />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

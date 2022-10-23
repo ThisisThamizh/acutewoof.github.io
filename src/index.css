@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-theme=night] {
+    --border-btn: 1px;
+    --tab-border: 1px;
+    --rounded-box: 0;
+    --rounded-btn: 0;
+    --rounded-badge: 0;
+    --animation-btn: 0;
+    --animation-input: 0;
+    --tab-radius: 0;
+}
