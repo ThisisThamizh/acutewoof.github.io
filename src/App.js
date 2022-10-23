@@ -18,6 +18,7 @@ function useOnScreen(ref) {
     return () => {
       observer.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isIntersecting;
@@ -34,6 +35,12 @@ function App() {
 
   const imgRef = useRef();
   const isImgVis = useOnScreen(imgRef);
+
+  const titleRef = useRef();
+  const isTitleVis = useOnScreen(titleRef);
+
+  const nameRef = useRef();
+  const isNameVis = useOnScreen(nameRef);
 
   useEffect(() => {
     if (isVis) {
@@ -59,7 +66,19 @@ function App() {
         { opacity: 1, x: 0, duration: 1 }
       );
     }
-  }, [isVis, isBtnVis]);
+
+    if (isTitleVis) {
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 1 }
+      );
+    }
+
+    if (isNameVis) {
+      gsap.fromTo(nameRef.current, { opacity: 0 }, { opacity: 1, duration: 3 });
+    }
+  }, [isVis, isBtnVis, isImgVis, isTitleVis, isNameVis]);
 
   return (
     <div data-theme={theme}>
@@ -74,11 +93,14 @@ function App() {
           <div>
             <div className="px-26 hero-content flex-col lg:flex-row lg:gap-24">
               <div>
-                <div ref={ref}>
-                  <h1 className="text-5xl font-bold">
-                    I'm <span className="text-primary">Vithushan.</span>
+                <div>
+                  <h1 className="text-5xl font-bold" ref={titleRef}>
+                    I'm{" "}
+                    <span className="text-primary" ref={nameRef}>
+                      Vithushan.
+                    </span>
                   </h1>
-                  <p className=" py-10 text-justify ">
+                  <p className=" py-10 text-justify " ref={ref}>
                     I have been programming for over an year, and I've recently
                     decided to start freelancing.
                     <br />
