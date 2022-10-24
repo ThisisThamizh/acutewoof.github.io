@@ -118,7 +118,14 @@ function App() {
                     Say Hi!
                   </button>
                   {
-                    //  <button className="btn btn-primary">Get A Site Made</button>
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => {
+                        window.open("https://www.buymeacoffee.com/acutewoof");
+                      }}
+                    >
+                      Buy Me A Coffee
+                    </button>
                   }
                 </div>
               </div>
@@ -368,7 +375,7 @@ function Project(props) {
             </p>
             <div className="flex flex-row gap-2" ref={buttonRef}>
               <button
-                className="btn btn-primary"
+                className="btn btn-secondary"
                 onClick={() => {
                   window.open(link);
                 }}
