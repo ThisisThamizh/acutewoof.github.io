@@ -1,52 +1,75 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import Button from "./button";
 
 function Testimonials() {
   const [ref, inView] = useInView();
 
   return (
-    <section className=' px-12 py-20'>
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, x: -100 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-        transition={{ duration: 1 }}
-        class='max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6'
-      >
-        <figure class='max-w-screen-md mx-auto'>
-          <svg
-            class='h-12 mx-auto mb-3 text-slate-400 dark:text-slate-600'
-            viewBox='0 0 24 27'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z'
-              fill='currentColor'
-            />
-          </svg>
-          <blockquote>
-            <p class='text-2xl font-medium text-gray-900 dark:text-white'>
-              {`"`}He has built an amazing website for my agency and has
-              fulfilled every request and small detail I needed to fix,
-              absolutely worth my money, will do business with him again
-              {`"`}
-            </p>
-          </blockquote>
-          <figcaption class='flex items-center justify-center mt-6 space-x-3'>
-            <div class='flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700'>
-              <div class='pr-3 font-medium text-gray-900 dark:text-white'>
-                Vincent
-              </div>
-              <div class='pl-3 text-sm font-light text-gray-500 dark:text-gray-400'>
-                Founder of Ajez Media
-              </div>
-            </div>
-          </figcaption>
-        </figure>
-      </motion.div>
+    <section className='px-12 py-20 overflow-x-hidden'>
+      <div class='py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6'>
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 1 }}
+          class='mx-auto max-w-screen-sm'
+        >
+          <h2 class='mb-4 text-4xl lg:text-6xl font-extrabold text-center text-slate-900 dark:text-slate-300'>
+            Testimonials
+          </h2>
+          <p class='mb-8 font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400'>
+            {
+              "Don't just take my word about my service, here's what my clients have to say."
+            }
+          </p>
+        </motion.div>
+        <div class='grid mb-8 lg:mb-12 lg:grid-cols-2'>
+          <Testimony
+            name='Vincent'
+            title='Founder of Ajez Media'
+            text='He has built an amazing website for my agency and has fulfilled every request and small detail I needed to fix, absolutely worth my money, will do business with him again.'
+          />
+          <Testimony
+            name='Hudmon'
+            title='Fitness Writer'
+            text='He has done such a good job. Despite his young age, he works like a machine and fulfilled all requests. Every penny I gave him was worth it.'
+          />
+        </div>
+      </div>
     </section>
+  );
+}
+
+function Testimony(props) {
+  const [ref, inView] = useInView();
+  const { name, title, text } = props;
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <figure class=' h-full flex flex-col justify-center items-center p-8 text-center md:p-12'>
+        <blockquote class='mx-auto mb-8 max-w-2xl text-gray-500 dark:text-gray-400'>
+          <p class='my-4'>
+            {`"`}
+            {text}
+            {`"`}
+          </p>
+        </blockquote>
+        <figcaption class='flex justify-center items-center space-x-3'>
+          <div class='flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700'>
+            <div class='pr-3 font-medium text-gray-900 dark:text-white'>
+              {name}
+            </div>
+            <div class='pl-3 text-sm font-light text-gray-500 dark:text-gray-400'>
+              {title}
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    </motion.div>
   );
 }
 

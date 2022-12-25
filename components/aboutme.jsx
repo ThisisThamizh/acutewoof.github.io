@@ -9,23 +9,23 @@ function AboutMe() {
   const [ref4, inView4] = useInView();
 
   return (
-    <section className='bg-graph-paper dark:bg-graph-paper-dark p-12 py-20'>
+    <section className=' p-12 py-20'>
       <div className='max-w-screen-md mx-auto flex flex-col gap-12'>
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, x: -100 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='text-6xl font-bold text-center text-slate-900 dark:text-slate-300'>
+          <h1 className='text-4xl lg:text-6xl font-extrabold text-center text-slate-900 dark:text-slate-300'>
             About Me
           </h1>
         </motion.div>
         <div className='text-lg text-justify text-slate-900 dark:text-gray-400 flex flex-col gap-4'>
           <motion.p
             ref={ref2}
-            initial={{ opacity: 0, x: -100 }}
-            animate={inView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            initial={{ opacity: 0 }}
+            animate={inView2 ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
           >
             {
@@ -43,8 +43,8 @@ function AboutMe() {
           </motion.p>
           <motion.p
             ref={ref3}
-            initial={{ opacity: 0, x: -100 }}
-            animate={inView3 ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            initial={{ opacity: 0 }}
+            animate={inView3 ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
           >
             {
@@ -53,8 +53,8 @@ function AboutMe() {
           </motion.p>
           <motion.p
             ref={ref4}
-            initial={{ opacity: 0, x: -100 }}
-            animate={inView4 ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            initial={{ opacity: 0 }}
+            animate={inView4 ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
           >
             {

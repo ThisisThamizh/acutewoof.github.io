@@ -3,6 +3,8 @@ import Hero from "../components/hero";
 import Head from "next/head";
 import Agency from "../components/agency";
 import Testimonials from "../components/testimonials";
+import WhatIUse from "../components/whatIUse";
+import Socials from "../components/socials";
 
 function App() {
   return (
@@ -27,9 +29,19 @@ function App() {
       </Head>
       <main className='bg-hero dark:bg-hero-dark min-h-screen'>
         <Hero />
-        <AboutMe />
+        <div className='bg-graph-paper dark:bg-graph-paper-dark'>
+          <WhatIUse />
+        </div>
+        <div className='bg-wiggle dark:bg-wiggle-dark'>
+          <Socials />
+        </div>
+        <div className='bg-graph-paper dark:bg-graph-paper-dark'>
+          <AboutMe />
+        </div>
         <Agency />
-        <Testimonials />
+        <div className='bg-graph-paper dark:bg-graph-paper-dark'>
+          <Testimonials />
+        </div>
 
         <footer class='p-4 md:flex md:items-center md:justify-between md:p-6 '>
           <span class='text-sm text-gray-500 sm:text-center dark:text-gray-400'>

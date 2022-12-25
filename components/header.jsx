@@ -1,10 +1,20 @@
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Header() {
+  const [ref, inView] = useInView();
+
   return (
     <header>
       <nav class='bg-transparent px-4 lg:px-6 pt-8 mb-12'>
-        <div class='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'>
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 1 }}
+          class='flex flex-wrap justify-between items-center mx-auto max-w-screen-xl'
+        >
           <span class='self-center text-xl font-semibold whitespace-nowrap dark:text-white' />
           <div
             class='hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1'
@@ -58,7 +68,7 @@ function Header() {
               </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
       </nav>
     </header>
   );

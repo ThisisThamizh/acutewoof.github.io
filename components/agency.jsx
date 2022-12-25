@@ -7,24 +7,23 @@ function Agency() {
   const [ref2, inView2] = useInView();
 
   return (
-    <section className='bg-wiggle dark:bg-wiggle-dark px-12 py-20'>
+    <section className='px-12 py-20'>
       <div className='max-w-screen-md mx-auto flex flex-col gap-12'>
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, x: -100 }}
-          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='text-6xl font-bold text-center text-slate-900 dark:text-slate-300'>
-            Web Development Agency <br />
-            <span className='text-blue-500 dark:text-blue-400'>WebTrope</span>
+          <h1 className='text-4xl lg:text-6xl font-extrabold text-center text-slate-900 dark:text-slate-300'>
+            WebTrope
           </h1>
         </motion.div>
         <div className='flex flex-col gap-12'>
           <motion.div
             ref={ref2}
-            initial={{ opacity: 0, x: -100 }}
-            animate={inView2 ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            initial={{ opacity: 0 }}
+            animate={inView2 ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 1 }}
             className='flex flex-col gap-4'
           >
