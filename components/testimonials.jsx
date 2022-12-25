@@ -28,17 +28,19 @@ function Testimonials() {
           </svg>
           <blockquote>
             <p class='text-2xl font-medium text-gray-900 dark:text-white'>
-              {`"`}You are the best website designer. Thanks for your service!
+              {`"`}He has built an amazing website for my agency and has
+              fulfilled every request and small detail I needed to fix,
+              absolutely worth my money, will do business with him again
               {`"`}
             </p>
           </blockquote>
           <figcaption class='flex items-center justify-center mt-6 space-x-3'>
             <div class='flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700'>
               <div class='pr-3 font-medium text-gray-900 dark:text-white'>
-                Hudmon
+                Vincent
               </div>
               <div class='pl-3 text-sm font-light text-gray-500 dark:text-gray-400'>
-                Fitness Course Writer
+                Founder of Ajez Media
               </div>
             </div>
           </figcaption>
