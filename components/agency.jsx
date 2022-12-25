@@ -8,14 +8,14 @@ function Agency() {
 
   return (
     <section className='px-12 py-20'>
-      <div className='max-w-screen-md mx-auto flex flex-col gap-12'>
+      <div className='flex flex-col max-w-screen-md gap-12 mx-auto'>
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='text-4xl lg:text-6xl font-extrabold text-center text-slate-900 dark:text-slate-300'>
+          <h1 className='text-4xl font-extrabold text-center lg:text-6xl text-slate-900 dark:text-slate-300'>
             WebTrope
           </h1>
         </motion.div>

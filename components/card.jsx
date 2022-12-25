@@ -18,14 +18,14 @@ function Card(props) {
         className
       }
     >
-      <div className='grow p-6 flex justify-center items-center'>
+      <div className='flex items-center justify-center p-6 grow'>
         {icon}
       </div>
       <div className='p-5'>
-        <h5 className='w-full text-left mb-2 text-2xl font-bold tracking-tight text-slate-800 dark:text-white'>
+        <h5 className='w-full mb-2 text-2xl font-bold tracking-tight text-left text-slate-800 dark:text-white'>
           {title}
         </h5>
-        <p className='text-justify mb-3 font-normal text-lg text-gray-700 dark:text-gray-400'>
+        <p className='mb-3 text-lg font-normal text-justify text-gray-700 dark:text-gray-400'>
           {description}
         </p>
       </div>

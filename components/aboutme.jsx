@@ -9,19 +9,19 @@ function AboutMe() {
   const [ref4, inView4] = useInView();
 
   return (
-    <section className=' p-12 py-20'>
-      <div className='max-w-screen-md mx-auto flex flex-col gap-12'>
+    <section className='p-12 py-20 '>
+      <div className='flex flex-col max-w-screen-md gap-12 mx-auto'>
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className='text-4xl lg:text-6xl font-extrabold text-center text-slate-900 dark:text-slate-300'>
+          <h1 className='text-4xl font-extrabold text-center lg:text-6xl text-slate-900 dark:text-slate-300'>
             About Me
           </h1>
         </motion.div>
-        <div className='text-lg text-justify text-slate-900 dark:text-gray-400 flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 text-lg text-justify text-slate-900 dark:text-gray-400'>
           <motion.p
             ref={ref2}
             initial={{ opacity: 0 }}
@@ -34,7 +34,7 @@ function AboutMe() {
             <Link
               href='https://webtrope.github.io'
               target='_blank'
-              className='text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-500 transition ease-in-out duration-150'
+              className='text-blue-500 transition duration-150 ease-in-out dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-500'
             >
               WebTrope
             </Link>
