@@ -27,7 +27,7 @@ function App() {
         <meta name='apple-mobile-web-app-title' content='ACuteWoof' />
         <meta name='application-name' content='ACuteWoof' />
       </Head>
-      <main className='bg-hero dark:bg-hero-dark min-h-screen'>
+      <main className='min-h-screen bg-hero dark:bg-hero-dark'>
         <Hero />
         <div className='bg-graph-paper dark:bg-graph-paper-dark'>
           <WhatIUse />
@@ -45,11 +45,7 @@ function App() {
 
         <footer class='p-4 md:flex md:items-center md:justify-between md:p-6 '>
           <span class='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
-            © 2022-2023{" "}
-            <a href='https://flowbite.com/' class='hover:underline'>
-              ACuteWoof
-            </a>
-            . All Rights Reserved.
+            © 2022-2023 ACuteWoof. All Rights Reserved.
           </span>
         </footer>
       </main>
