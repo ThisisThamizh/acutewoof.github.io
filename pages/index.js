@@ -13,7 +13,7 @@ function App() {
         <title>ACuteWoof</title>
         <meta
           name='description'
-          content='A web developer at WebTrope web development agency and at Networthy.'
+          content='A web developer at WebTrope web development agency and at Asbez Media.'
         />
         <meta
           name='keywords'
