@@ -102,7 +102,9 @@ function Hero() {
                     />
                   </svg>
                 }
-              />
+              >
+                Blog
+              </Button>
             </div>
           </motion.div>
         </div>
