@@ -29,7 +29,7 @@ function AboutMe() {
             transition={{ duration: 1 }}
           >
             {
-              "I am a 14 year old developer from Sri Lanka with a passion for web development. I specialize in using TailwindCSS, NextJS, and Firebase to create functional and visually appealing websites. I run a web development agency called "
+              "I am a 15 year old developer from Sri Lanka with a passion for web development. I specialize in using TailwindCSS, NextJS, and Firebase to create functional and visually appealing websites. I run a web development agency called "
             }
             <Link
               href='https://webtrope.github.io'
